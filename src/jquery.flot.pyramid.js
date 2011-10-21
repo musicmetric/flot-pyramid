@@ -167,7 +167,7 @@ var FlotPyramid = (function(){
     } else {
       // so, if the data labels have already been extracted, every other
       // series' data is checked.
-      checkTicks(data, yaxisTicks);
+      //checkTicks(data, yaxisTicks);
     }
 
     // Once extracted (or checked) the labels, the data can be rewritten in
@@ -181,7 +181,10 @@ var FlotPyramid = (function(){
     for(i = 0, len = data.length; i < len; i += 1) {
       // extracting the data label and building an array in the form _[[1,
       // "0-10"], [2, "10-20"],..., [9, "90+"]]_
-      yaxisTicks.push([i, data[i][0]]);
+      if (i === 0 || data[i][0] % 10 === 0 || i === len - 1) {
+        yaxisTicks.push([i, data[i][0]]);
+      }
+
     }
   }
 
